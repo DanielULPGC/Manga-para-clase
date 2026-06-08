@@ -4747,5 +4747,23 @@
   </div>
 </div>
   <script src="sw-register.js"></script>
+  <script>
+    (function(){
+      function settleScHash(){
+        if (location.hash !== '#sc') return;
+        var sc = document.getElementById('sc');
+        if (!sc) return;
+        window.scrollTo(0, sc.offsetTop);
+        sc.scrollLeft = 0;
+      }
+      window.addEventListener('hashchange', settleScHash);
+      window.addEventListener('load', settleScHash);
+      window.addEventListener('pageshow', settleScHash);
+      setTimeout(settleScHash, 0);
+      setTimeout(settleScHash, 350);
+      setTimeout(settleScHash, 1200);
+      setTimeout(settleScHash, 2500);
+    })();
+  </script>
 </body>
 </html>

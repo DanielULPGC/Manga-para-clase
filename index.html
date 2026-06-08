@@ -132,8 +132,7 @@ tailwind.config = {
     opacity:1;transition:opacity .6s ease;}
   #intro-overlay.intro-hide{opacity:0;pointer-events:none;}
   #intro-mp4{width:100%;height:100%;object-fit:contain;background:#f5efe0;}
-  #intro-card{display:none;width:1920px;height:1080px;border:0;background:#f5efe0;
-    transform-origin:center center;}
+  #intro-card{display:none;width:100%;height:100%;border:0;background:#f5efe0;}
   #intro-skip{position:fixed;right:22px;bottom:20px;z-index:10000;
     font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.06em;
     color:#1a1008;background:rgba(245,239,224,.72);border:1px solid rgba(26,16,8,.35);
@@ -173,11 +172,10 @@ tailwind.config = {
     if(skip) skip.addEventListener('click',finish);
     window.addEventListener('message',function(e){ if(e&&e.data==='intro-done') finish(); });
     guard=setTimeout(finish,45000);
-    function fitCard(){ if(!card) return; var s=Math.min(innerWidth/1920,innerHeight/1080); card.style.transform='scale('+s+')'; }
     function fallbackToCard(){
       if(usedFallback||done) return; usedFallback=true;
       if(vid) vid.style.display='none';
-      if(card){ card.style.display='block'; fitCard(); window.addEventListener('resize',fitCard); card.src='intro/card.html'; }
+      if(card){ card.style.display='block'; card.src='intro/card.html'; }
       clearTimeout(guard); guard=setTimeout(finish,45000);
     }
     if(vid){

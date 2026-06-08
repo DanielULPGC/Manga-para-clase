@@ -1,7 +1,7 @@
 /**
  * sw.js — Service Worker para El manga como recurso didáctico
  * Biblioteca Campus del Obelisco · Aula de Cómic · ULPGC
- * Versión: 5.46.7  (auditoría final: navegación, catálogo y acciones blindadas)
+ * Versión: 5.46.8  (intro y línea del tiempo adaptadas a móvil)
  *
  * ── PROTOCOLO DE MANTENIMIENTO ─────────────────────────────────
  * Cada vez que se publique una nueva versión del recurso:
@@ -24,7 +24,7 @@
 'use strict';
 
 /* ── VERSIÓN DE CACHÉ ── actualizar en cada release ── */
-const CACHE_NAME = 'manga-ulpgc-v5.46.7';
+const CACHE_NAME = 'manga-ulpgc-v5.46.8';
 
 /* ── Assets precacheados en la instalación del SW ─────────────────
    Incluir aquí cualquier archivo nuevo que se añada al proyecto. */
