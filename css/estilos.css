@@ -195,14 +195,30 @@ h1 em { color: var(--red); font-style: normal; }
   padding: 1.5rem 5rem 2.5rem;
   cursor: grab;
   user-select: none;
+  touch-action: pan-y pinch-zoom;
   -webkit-overflow-scrolling: touch;
 }
 .scroll:active { cursor: grabbing; }
 .scroll::-webkit-scrollbar { height: 5px; }
 .scroll::-webkit-scrollbar-track { background: var(--paper2); }
 .scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+#sc.scroll {
+  touch-action: pan-y pinch-zoom !important;
+}
 @media (max-width: 760px) {
-  .scroll { padding: 1rem 1rem 2rem; }
+  .scroll {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 1rem 1rem 2rem;
+    scroll-padding-inline: 1rem;
+    overscroll-behavior-inline: contain;
+  }
+  .scroll .tl {
+    min-width: max-content;
+  }
+  .scroll .col {
+    scroll-margin-inline: 1rem;
+  }
 }
 
 /* ─── TIMELINE TABLE ─────────────────────── */

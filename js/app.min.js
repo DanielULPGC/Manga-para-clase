@@ -2901,7 +2901,8 @@ document.querySelectorAll('.card, .cat-card').forEach(card => {
 
 // ── Drag to scroll ──────────────────────────────────
 const sc = document.getElementById('sc');
-let drag = false, sx, sl;
+let drag = false, sx, sy, sl, touchAxis = '';
+if (sc) sc.style.touchAction = 'pan-y pinch-zoom';
 sc.addEventListener('mousedown', e => {
   if (e.target.closest('.card')) return;
   drag = true; sx = e.pageX - sc.offsetLeft; sl = sc.scrollLeft;
@@ -2914,8 +2915,42 @@ sc.addEventListener('mousemove', e => {
   e.preventDefault();
   sc.scrollLeft = sl - (e.pageX - sc.offsetLeft - sx) * 1.1;
 });
-sc.addEventListener('touchstart', e => { sx = e.touches[0].pageX; sl = sc.scrollLeft; }, { passive: true });
-sc.addEventListener('touchmove',  e => { sc.scrollLeft = sl - (e.touches[0].pageX - sx); }, { passive: true });
+sc.addEventListener('touchstart', e => {
+  sx = e.touches[0].pageX;
+  sy = e.touches[0].pageY;
+  sl = sc.scrollLeft;
+  touchAxis = '';
+}, { passive: true });
+sc.addEventListener('touchmove', e => {
+  const t = e.touches[0];
+  const dx = t.pageX - sx;
+  const dy = t.pageY - sy;
+  if (!touchAxis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+    touchAxis = Math.abs(dx) > Math.abs(dy) * 1.15 ? 'x' : 'y';
+  }
+  if (touchAxis === 'x') {
+    e.preventDefault();
+    sc.scrollLeft = sl - dx;
+  }
+}, { passive: false });
+
+function settleTimelineMobileScroll() {
+  if (!sc || location.hash !== '#sc') return;
+  if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
+  requestAnimationFrame(() => {
+    window.scrollTo(0, sc.offsetTop);
+    sc.scrollLeft = 0;
+  });
+}
+window.addEventListener('hashchange', settleTimelineMobileScroll);
+document.addEventListener('DOMContentLoaded', settleTimelineMobileScroll);
+window.addEventListener('load', settleTimelineMobileScroll);
+window.addEventListener('message', e => {
+  if (e && e.data === 'intro-done') setTimeout(settleTimelineMobileScroll, 120);
+});
+setTimeout(settleTimelineMobileScroll, 0);
+setTimeout(settleTimelineMobileScroll, 250);
+setTimeout(settleTimelineMobileScroll, 1200);
 
 
 // ── Uso pedagógico filter ────────────────────────────────────

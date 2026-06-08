@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intro · Las eras de Japón y el manga — frame-manga-era (secuencia)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,29 +11,50 @@
   :root{ --bg:#f5efe0; --ink:#1a1008; --red:#8b1a1a; --gold:#b8860b; }
   *{ margin:0; padding:0; box-sizing:border-box; }
   body{ background:var(--bg); color:var(--ink); font-family:'EB Garamond',Georgia,serif;
-    width:1920px; height:1080px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    width:100vw; min-height:100vh; min-height:100svh; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; padding:clamp(18px,4vw,72px); }
   .cinzel{ font-family:'Cinzel',serif; } .jp{ font-family:'Noto Serif JP',serif; }
 
-  .stage{ position:relative; width:1640px; height:840px; padding:0 80px;
-    display:grid; grid-template-columns:1fr 520px; gap:80px; align-items:center; }
-  .stage::before,.stage::after{ content:""; position:absolute; left:80px; right:80px; height:2px;
+  .stage{ position:relative; width:min(1640px,100%); min-height:min(840px,calc(100svh - 36px));
+    padding:clamp(28px,5vw,80px); display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(180px,min(28vw,520px));
+    gap:clamp(28px,5vw,80px); align-items:center; }
+  .stage::before,.stage::after{ content:""; position:absolute; left:clamp(28px,5vw,80px); right:clamp(28px,5vw,80px); height:2px;
     background:linear-gradient(90deg,var(--gold) 0%,transparent 70%); }
   .stage::before{ top:0; } .stage::after{ bottom:0; background:linear-gradient(270deg,var(--red) 0%,transparent 70%); }
 
-  .kicker{ font-family:'Cinzel',serif; font-weight:600; letter-spacing:.42em; text-transform:uppercase; font-size:20px; color:var(--red); }
-  .era-jp{ font-size:42px; color:var(--gold); margin-top:6px; }
-  .era{ font-family:'Cinzel',serif; font-weight:700; font-size:108px; line-height:1.02; margin-top:4px; }
-  .period{ font-size:30px; font-style:italic; opacity:.72; margin-top:10px; }
-  .rule{ width:120px; height:3px; background:var(--ink); margin:34px 0 30px; }
-  .work-label{ font-family:'Cinzel',serif; letter-spacing:.16em; text-transform:uppercase; font-size:16px; opacity:.55; }
-  .work{ font-size:46px; font-weight:500; line-height:1.12; margin-top:6px; }
-  .author{ font-size:26px; color:var(--red); margin-top:8px; }
-  .desc{ font-size:25px; line-height:1.5; margin-top:26px; max-width:760px; opacity:.9; }
+  .kicker{ font-family:'Cinzel',serif; font-weight:600; letter-spacing:.2em; text-transform:uppercase; font-size:clamp(12px,1.35vw,20px); color:var(--red); }
+  .era-jp{ font-size:clamp(24px,3vw,42px); color:var(--gold); margin-top:6px; }
+  .era{ font-family:'Cinzel',serif; font-weight:700; font-size:clamp(48px,7.2vw,108px); line-height:1.02; margin-top:4px; }
+  .period{ font-size:clamp(18px,2.1vw,30px); font-style:italic; opacity:.72; margin-top:10px; }
+  .rule{ width:clamp(70px,8vw,120px); height:3px; background:var(--ink); margin:clamp(18px,3vw,34px) 0 clamp(18px,2.8vw,30px); }
+  .work-label{ font-family:'Cinzel',serif; letter-spacing:.14em; text-transform:uppercase; font-size:clamp(11px,1.1vw,16px); opacity:.55; }
+  .work{ font-size:clamp(28px,3.3vw,46px); font-weight:500; line-height:1.12; margin-top:6px; }
+  .author{ font-size:clamp(17px,1.8vw,26px); color:var(--red); margin-top:8px; }
+  .desc{ font-size:clamp(17px,1.75vw,25px); line-height:1.45; margin-top:clamp(16px,2.2vw,26px); max-width:760px; opacity:.9; }
 
   .seal-wrap{ display:flex; align-items:center; justify-content:center; }
-  .seal{ width:340px; height:340px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .seal{ width:min(340px,100%); aspect-ratio:1; position:relative; display:flex; align-items:center; justify-content:center; }
   .seal svg{ position:absolute; inset:0; width:100%; height:100%; }
-  .seal .glyph{ font-family:'Noto Serif JP',serif; font-weight:700; font-size:150px; color:var(--bg); z-index:2; line-height:1; }
+  .seal .glyph{ font-family:'Noto Serif JP',serif; font-weight:700; font-size:clamp(82px,10vw,150px); color:var(--bg); z-index:2; line-height:1; }
+
+  @media (max-width: 700px) {
+    body{ padding:18px; align-items:stretch; }
+    .stage{ min-height:calc(100svh - 36px); padding:28px 22px; grid-template-columns:1fr; gap:18px; align-content:center; }
+    .stage::before,.stage::after{ left:22px; right:22px; }
+    .seal-wrap{ position:absolute; right:20px; top:22px; width:118px; opacity:.14; pointer-events:none; }
+    .era{ font-size:clamp(42px,13vw,68px); max-width:9ch; overflow-wrap:anywhere; }
+    .work{ font-size:clamp(25px,8vw,36px); }
+    .desc{ display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+  }
+
+  @media (max-width: 380px), (max-height: 680px) {
+    .stage{ padding:22px 18px; }
+    .stage::before,.stage::after{ left:18px; right:18px; }
+    .seal-wrap{ display:none; }
+    .rule{ margin:14px 0; }
+    .desc{ -webkit-line-clamp:3; }
+  }
 
   /* estado base: oculto antes de animar */
   .kicker,.era-jp,.era,.period,.rule,.work-label,.work,.author,.desc{ opacity:0; }
