@@ -1,7 +1,7 @@
 /**
  * sw.js — Service Worker para El manga como recurso didáctico
  * Biblioteca Campus del Obelisco · Aula de Cómic · ULPGC
- * Versión: 5.42  (altas de catálogo OPAC junio 2026)
+ * Versión: 5.46.2  (catálogo oculto y selector docente sin imágenes)
  *
  * ── PROTOCOLO DE MANTENIMIENTO ─────────────────────────────────
  * Cada vez que se publique una nueva versión del recurso:
@@ -24,7 +24,7 @@
 'use strict';
 
 /* ── VERSIÓN DE CACHÉ ── actualizar en cada release ── */
-const CACHE_NAME = 'manga-ulpgc-v5.46';
+const CACHE_NAME = 'manga-ulpgc-v5.46.2';
 
 /* ── Assets precacheados en la instalación del SW ─────────────────
    Incluir aquí cualquier archivo nuevo que se añada al proyecto. */
