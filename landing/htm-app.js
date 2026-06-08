@@ -103,8 +103,8 @@
 
   function Nav() {
     const links = [
-      { l:'Marco', h:'#marco' }, { l:'Caminos', h:'#caminos' },
-      { l:'Fondo', h:'#fondo' }, { l:'Aula', h:'#aula' }, { l:'Equipo', h:'#equipo' },
+      { l:'Marco', h:'recurso.html#parte-i' }, { l:'Línea', h:'recurso.html#sc' },
+      { l:'Fondo', h:'#fondo' }, { l:'Situaciones', h:'recurso.html#situaciones' }, { l:'Equipo', h:'#equipo' },
     ];
     return html`
       <nav className="fixed top-4 left-0 right-0 z-50 px-6 lg:px-12 flex items-center justify-between">

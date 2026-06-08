@@ -3450,27 +3450,23 @@ button.gen-panel {
 .docente-card {
   display: flex;
   flex-direction: column;
-  min-height: 29rem;
+  min-height: 22rem;
   border: 1px solid rgba(92, 62, 26, .18);
   border-top: .32rem solid var(--docente-color, #7a5a0a);
   background: rgba(255,255,255,.8);
-  padding: .85rem;
+  padding: 1rem .95rem .95rem;
   border-radius: 7px;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(48,33,12,.07);
 }
+#selector-docente img {
+  display: none !important;
+}
 .docente-plate {
-  margin: -.85rem -.85rem .75rem;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #eadfcb;
+  display: none;
 }
 .docente-plate img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(.95) contrast(1.03);
+  display: none;
 }
 .docente-card-top {
   display: flex;
@@ -3551,21 +3547,15 @@ button.gen-panel {
   padding: .9rem;
   display: flex;
   flex-direction: column;
-  min-height: 23rem;
+  min-height: 14rem;
   border-radius: 7px;
   overflow: hidden;
   box-shadow: 0 8px 22px rgba(48,33,12,.06);
 }
 .ruta-media {
-  margin: -.9rem -.9rem .8rem;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: #eadfcb;
+  display: none;
 }
 .ruta-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
 }
 .ruta-card h3 {
@@ -3585,7 +3575,7 @@ button.gen-panel {
 }
 .yokai-visual-band {
   display: grid;
-  grid-template-columns: minmax(220px, .9fr) repeat(2, minmax(190px, .65fr));
+  grid-template-columns: 1fr;
   gap: .85rem;
   align-items: stretch;
   margin-top: 1rem;
@@ -3615,13 +3605,10 @@ button.gen-panel {
   line-height: 1.45;
 }
 .yokai-visual-band figure {
-  margin: 0;
-  min-width: 0;
-  background: #fffaf0;
-  border: 1px solid rgba(92,62,26,.18);
+  display: none;
 }
 .yokai-visual-band img {
-  display: block;
+  display: none;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;

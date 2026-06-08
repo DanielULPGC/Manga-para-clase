@@ -2696,7 +2696,13 @@ document.addEventListener('click', function(e) {
     const arg    = target.dataset.arg;
     const arg2   = target.dataset.arg2;
     const arg3   = target.dataset.arg3;
-    const fn     = window[action];
+    const localActions = {
+      filterByTitle,
+      applyDocenteRoute,
+      setCatalogMode,
+      toggleCatalogExplore
+    };
+    const fn     = localActions[action] || window[action];
     if (typeof fn === 'function') {
       e.stopPropagation();
       const syntheticEv = { target };
@@ -4223,7 +4229,45 @@ function closeComp() {
   FocusTrap.deactivate();
 }
 
+function resolveCatalogTitleQuery(title) {
+  const raw = String(title || '').trim();
+  if (!raw) return '';
+  const catalog = (typeof CATALOGO_EFECTIVO !== 'undefined' && CATALOGO_EFECTIVO.length)
+    ? CATALOGO_EFECTIVO
+    : (typeof CATALOGO !== 'undefined' ? CATALOGO : []);
+  if (!catalog.length) return raw;
+
+  const normalize = s => String(s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[¡!¿?.,:;·\-–—()[\]"'`´]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const aliases = {
+    'astro boy pluto': 'Pluto',
+    'astroboy pluto': 'Pluto',
+    'astro boy': 'Astroboy',
+    'planetes': 'Planetes :integral',
+    'frieren': 'Frieren: más allá del fin del viaje',
+    'uzumaki': 'Uzumaki : espiral',
+    'death note': 'Death Note Edición integral',
+    'atelier of witch hat': 'Atelier of witch hat = El atelier de sombreros de mago',
+    'dinosan': 'Dinosan : Dinosaurs Sanctuary',
+    'ghost in the shell': 'The ghost in the shell',
+    'team medical dragon': 'Team medical dragon'
+  };
+  const key = normalize(raw);
+  const alias = aliases[key];
+  if (alias) return alias;
+
+  const exact = catalog.find(t => normalize(t.titulo) === key);
+  if (exact) return exact.titulo;
+  const partial = catalog.find(t => normalize(t.titulo).includes(key) || key.includes(normalize(t.titulo)));
+  return partial?.titulo || raw;
+}
+
 function filterByTitle(title) {
+  const query = resolveCatalogTitleQuery(title);
   ['compOverlay','mapaOverlay','rubricaOverlay','fichaOverlay','secOverlay'].forEach(id => {
     document.getElementById(id)?.classList.remove('open');
   });
@@ -4231,13 +4275,14 @@ function filterByTitle(title) {
 
   const searchInput = document.getElementById('catalogSearch');
   if (searchInput) {
-    searchInput.value = title;
-    if (typeof searchCatalog === 'function') searchCatalog(title);
+    searchInput.value = query;
+    if (typeof searchCatalog === 'function') searchCatalog(query);
     searchInput.focus();
   }
   const target = document.getElementById('catalogSearch') || document.getElementById('catalogo');
   target?.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
 }
+window.filterByTitle = filterByTitle;
 
 document.addEventListener('DOMContentLoaded', updateCompDrawer);
 
@@ -6082,10 +6127,8 @@ function _docenteCard(entry, forcedUso) {
   if (!entry) return '';
   const uso = forcedUso || String(entry.uso || '').split(' ')[0] || 'visual';
   const nivel = _docenteLevel(entry) || 'secundaria';
-  const visual = DOCENTE_VISUALS[uso] || DOCENTE_VISUALS.visual;
   const badges = (entry.badges || []).slice(0, 2).map(b => `<span>${escapeHtml(b)}</span>`).join('');
   return `<article class="docente-card" style="--docente-color:${escapeHtml(entry.color || '#7a5a0a')}">
-    <figure class="docente-plate"><img src="${escapeHtml(visual.src)}" loading="lazy" alt="${escapeHtml(visual.alt)}"></figure>
     <div class="docente-card-top">
       <span class="docente-uso">${escapeHtml(DOCENTE_USO_LABELS[uso] || uso)}</span>
       <span class="docente-nivel">${escapeHtml(nivel.replace(/\s+/g, ' · '))}</span>
@@ -6156,6 +6199,8 @@ function setCatalogMode(mode) {
   if (btn) btn.textContent = isBiblioteca ? 'Cerrar modo biblioteca' : 'Abrir modo biblioteca';
   if (isBiblioteca) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+window.setCatalogMode = setCatalogMode;
+window.applyDocenteRoute = applyDocenteRoute;
 
 function initDocenteSelector() {
   ['docenteNivel','docenteUso','docenteTiempo','docenteMadurez'].forEach(id => {
@@ -6176,6 +6221,7 @@ if (document.readyState === 'loading') {
 function toggleCatalogExplore() {
   setCatalogMode(catalogExpanded ? 'aula' : 'biblioteca');
 }
+window.toggleCatalogExplore = toggleCatalogExplore;
 
 // When user searches: show grid regardless of collapsed state
 const _origSearch = typeof searchCatalog === 'function' ? searchCatalog : null;
@@ -6192,15 +6238,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// When user clicks a filter button: expand
+// When user clicks a filter button: keep the full catalog hidden.
 const _origFilterUso = typeof filterUso === 'function' ? filterUso : null;
 if (typeof filterUso === 'function') {
   const __origFU = filterUso;
   filterUso = function(v) {
     __origFU(v);
-    if (v !== 'all') {
-      setCatalogMode('biblioteca');
-    }
   };
 }
 const _origFilterNivel = typeof filterNivel === 'function' ? filterNivel : null;
@@ -6208,9 +6251,6 @@ if (typeof filterNivel === 'function') {
   const __origFN = filterNivel;
   filterNivel = function(v) {
     __origFN(v);
-    if (v !== 'all') {
-      setCatalogMode('biblioteca');
-    }
   };
 }
 
@@ -9516,7 +9556,7 @@ const LECTURA_TITULOS = {
           'Redacta un análisis de la obra desde la perspectiva de los estudios culturales japoneses: qué dice sobre la memoria histórica del bushido en el Japón contemporáneo.',
           '¿Cómo se inscribe Vagabond en la tradición del jidaigeki (drama histórico)? ¿Qué hereda y qué subvierte?',
         ],
-        visual: 'Realiza un análisis comparativo del estilo visual de Inoue en Vagabond vs. Slam Dunk: ¿cómo adapta el trazo y la composición a géneros tan diferentes?',
+        visual: 'Analiza el estilo visual de Inoue en Vagabond: ¿cómo usa el trazo, el ritmo y la composición para convertir el combate en reflexión interior?',
       },
     },
   },
