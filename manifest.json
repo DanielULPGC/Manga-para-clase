@@ -1,9 +1,9 @@
-﻿{
+{
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
 
-  "name": "Las eras de JapÃ³n y el manga â€” Biblioteca ULPGC",
+  "name": "Las eras de Japón y el manga — Biblioteca ULPGC",
   "short_name": "Manga ULPGC",
-  "description": "LÃ­nea del tiempo interactiva, catÃ¡logo pedagÃ³gico de 280 tÃ­tulos, situaciones de aprendizaje LOMLOE e itinerarios didÃ¡cticos para EducaciÃ³n Infantil, Primaria, Secundaria y Bachillerato. Biblioteca del Campus del Obelisco Â· Aula de CÃ³mic Â· ULPGC.",
+  "description": "Línea del tiempo interactiva, catálogo pedagógico de 280 títulos, situaciones de aprendizaje LOMLOE e itinerarios didácticos para Educación Infantil, Primaria, Secundaria y Bachillerato. Biblioteca del Campus del Obelisco · Aula de Cómic · ULPGC.",
 
   "start_url": "./",
   "scope": "./",
@@ -38,16 +38,16 @@
 
   "screenshots": [
     {
-      "label": "LÃ­nea del tiempo interactiva de las eras del manga japonÃ©s",
+      "label": "Línea del tiempo interactiva de las eras del manga japonés",
       "form_factor": "wide"
     }
   ],
 
   "shortcuts": [
     {
-      "name": "CatÃ¡logo de tÃ­tulos",
-      "short_name": "CatÃ¡logo",
-      "description": "Accede al catÃ¡logo completo de 280 tÃ­tulos del fondo",
+      "name": "Catálogo de títulos",
+      "short_name": "Catálogo",
+      "description": "Accede al catálogo completo de 280 títulos del fondo",
       "url": "./#catalogo",
       "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
     },
@@ -59,9 +59,9 @@
       "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
     },
     {
-      "name": "Tabla currÃ­culo â†’ manga",
-      "short_name": "CurrÃ­culo",
-      "description": "Correspondencias entre contenidos curriculares y tÃ­tulos del fondo",
+      "name": "Tabla currículo → manga",
+      "short_name": "Currículo",
+      "description": "Correspondencias entre contenidos curriculares y títulos del fondo",
       "url": "./#curriculo",
       "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
     }
