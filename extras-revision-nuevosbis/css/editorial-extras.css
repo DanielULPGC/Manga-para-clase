@@ -1,10 +1,10 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   editorial-extras.css â€” Bloques didÃ¡cticos aÃ±adidos
-   Por quÃ© Â· DecÃ¡logo Â· Generador de viÃ±etas
-   Carga DESPUÃ‰S de editorial.css.
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════
+   editorial-extras.css — Bloques didácticos añadidos
+   Por qué · Decálogo · Generador de viñetas
+   Carga DESPUÉS de editorial.css.
+   ══════════════════════════════════════════════════════════════ */
 
-/* â”€â”€â”€ COMÃšN: contenedor editorial â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── COMÚN: contenedor editorial ───────────────────────────── */
 .ed-block {
   background: var(--paper);
   border-top: 1.5px solid var(--ink);
@@ -66,7 +66,7 @@
   text-wrap: pretty;
 }
 
-/* â”€â”€â”€ POR QUÃ‰: grid 3Ã—2 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── POR QUÉ: grid 3×2 ─────────────────────────────────────── */
 .por-que-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -121,7 +121,7 @@
   text-wrap: pretty;
 }
 
-/* â”€â”€â”€ DECÃLOGO: lista numerada editorial â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── DECÁLOGO: lista numerada editorial ───────────────────── */
 .decalogo {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -177,7 +177,7 @@
   text-wrap: pretty;
 }
 
-/* â”€â”€â”€ GENERADOR DE VIÃ‘ETAS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── GENERADOR DE VIÑETAS ─────────────────────────────────── */
 .gen-wrap {
   background: var(--ink);
   color: var(--paper);
@@ -438,7 +438,7 @@
   font-weight: 500;
 }
 
-/* â”€â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .por-que-grid { grid-template-columns: 1fr 1fr; }
   .por-que-grid .pq-cell:nth-child(3n) { border-right: 1px solid var(--ink); }
@@ -450,7 +450,7 @@
   .ed-block-header { grid-template-columns: 1fr; gap: 0.8rem; }
   .ed-block-num { font-size: 3rem; }
 }
-/* â”€â”€â”€ BONUS BLOCKS: Antes/Durante/DespuÃ©s Â· AnatomÃ­a pÃ¡gina Â· Mapa â”€â”€â”€ */
+/* ─── BONUS BLOCKS: Antes/Durante/Después · Anatomía página · Mapa ─── */
 
 /* Protocolo de 3 columnas */
 .protocolo {
@@ -509,7 +509,7 @@
   position: relative;
 }
 .protocolo-col li::before {
-  content: 'Â·';
+  content: '·';
   position: absolute;
   left: 0;
   top: -0.05em;
@@ -534,7 +534,7 @@
   padding-top: 0.9rem;
 }
 
-/* AnatomÃ­a de una pÃ¡gina */
+/* Anatomía de una página */
 .anatomia {
   display: grid;
   grid-template-columns: 360px 1fr;
@@ -774,7 +774,7 @@
 }
 .map-col.featured .map-list a small { color: rgba(243, 237, 225, 0.55); }
 
-/* â”€â”€â”€ Override editorial sobre Situaciones/Itinerarios/Universidad â”€â”€â”€ */
+/* ─── Override editorial sobre Situaciones/Itinerarios/Universidad ─── */
 
 /* Tabs con estilos inline: forzar nuestra apariencia */
 .itin-tab[style], .univ-tab[style], .sa-tab[style] {
@@ -804,7 +804,7 @@
   border-left-width: 3px !important;
 }
 
-/* H3/H4 dentro de estas secciones â€” tipografÃ­a editorial */
+/* H3/H4 dentro de estas secciones — tipografía editorial */
 .itin-section h3, .univ-section h3, .sa-section h3,
 .itin-section h4, .univ-section h4, .sa-section h4 {
   font-family: var(--ed-serif) !important;
@@ -845,7 +845,7 @@
   .recurso-map .map-col:nth-child(2n) { border-right: none !important; }
   .recurso-map .map-col:nth-last-child(-n+2) { border-bottom: none; }
 }
-/* â”€â”€â”€ Banner colapsado: estilo editorial â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Banner colapsado: estilo editorial ────────────────── */
 .catalog-collapsed-banner {
   text-align: left !important;
   max-width: 920px;
@@ -926,7 +926,7 @@
   font-size: 0.85rem;
 }
 
-/* BotÃ³n "Ver los 280 tÃ­tulos" â€” mÃ¡s editorial */
+/* Botón "Ver los 280 títulos" — más editorial */
 .catalog-section .catalog-explore-btn {
   display: block !important;
   margin: 1.6rem auto 0 !important;
@@ -946,12 +946,12 @@
   background: var(--ink) !important;
   color: var(--paper) !important;
 }
-/* Una vez expandido, ocultar el botÃ³n */
+/* Una vez expandido, ocultar el botón */
 .catalog-section:not(.catalog-collapsed) .catalog-explore-btn { display: none !important; }
 .catalog-searching .catalog-explore-btn { display: none !important; }
 .catalog-searching .catalog-collapsed-banner { display: none !important; }
 
-/* Search bar mÃ¡s prominente en estado colapsado */
+/* Search bar más prominente en estado colapsado */
 .catalog-collapsed .search-bar {
   position: sticky;
   top: 0;
@@ -961,10 +961,10 @@
   padding: 1rem 0;
 }
 
-/* Cuando hay bÃºsqueda: mostrar solo coincidencias */
+/* Cuando hay búsqueda: mostrar solo coincidencias */
 .catalog-searching #catGrid .cat-card { display: none !important; }
 .catalog-searching #catGrid .cat-card.search-match { display: flex !important; }
-/* Colapsado pero sin bÃºsqueda activa: ocultar todas las cards */
+/* Colapsado pero sin búsqueda activa: ocultar todas las cards */
 .catalog-collapsed:not(.catalog-searching) #catGrid { display: none; }
 
 
@@ -975,7 +975,7 @@
   .catalog-collapsed-banner .ccb-tips { flex-direction: column; gap: 0.6rem; }
 }
 
-/* â”€â”€â”€ Chips de bÃºsquedas sugeridas en el banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Chips de búsquedas sugeridas en el banner ──────────── */
 .catalog-collapsed-banner .ccb-suggested {
   display: flex;
   gap: 8px;
@@ -1016,12 +1016,12 @@
   color: rgba(26, 20, 16, 0.5);
 }
 
-/* â”€â”€â”€ Vista mÃ­nima de filtros: oculta ODS row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Vista mínima de filtros: oculta ODS row ─────────────── */
 body.minimal-filters #ods-filter-row {
   display: none !important;
 }
 body.minimal-filters #filterBar::after {
-  content: 'MÃ¡s filtros (ODS, advertencias)â€¦';
+  content: 'Más filtros (ODS, advertencias)…';
   display: block;
   font-family: var(--ed-mono);
   font-size: 0.62rem;
@@ -1037,7 +1037,7 @@ body.minimal-filters #filterBar:hover::after {
   color: var(--red);
 }
 
-/* â”€â”€â”€ Resultados con contexto: ficha expandida para 1-3 â”€â”€â”€ */
+/* ─── Resultados con contexto: ficha expandida para 1-3 ─── */
 #catGrid.few-results .cat-card.search-match {
   /* Tarjeta de ancho completo cuando son pocos */
   grid-column: span 2;
@@ -1063,7 +1063,7 @@ body.minimal-filters #filterBar:hover::after {
 }
 #catGrid.few-results .cat-card.search-match .cat-tip,
 #catGrid.few-results .cat-card.search-match .cat-card-body {
-  /* La descripciÃ³n pedagÃ³gica completa ya aparece dentro del body */
+  /* La descripción pedagógica completa ya aparece dentro del body */
 }
 #catGrid.few-results .cat-card.search-match .cat-card-body {
   padding: 1.4rem 1.4rem 1.2rem !important;
@@ -1086,7 +1086,7 @@ body.minimal-filters #filterBar:hover::after {
   border-top: 1px solid var(--ed-soft) !important;
 }
 
-/* â”€â”€â”€ Notice de filtros restaurados â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Notice de filtros restaurados ───────────────────────── */
 .mc-restored-notice {
   position: fixed;
   bottom: 1.4rem;
@@ -1131,9 +1131,9 @@ body.minimal-filters #filterBar:hover::after {
   border-color: var(--red);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   ETAPA SELECTOR â€” Entrada por rol docente
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════
+   ETAPA SELECTOR — Entrada por rol docente
+   ══════════════════════════════════════════════════════════════ */
 .etapa-selector {
   background: var(--paper);
   border-top: 1.5px solid var(--ink);
@@ -1305,13 +1305,13 @@ body.minimal-filters #filterBar:hover::after {
   .es-btn-all { margin-left: 0; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   ETAPA-JOVEN: filtro automÃ¡tico de tÃ­tulos sensibles
+/* ══════════════════════════════════════════════════════════════
+   ETAPA-JOVEN: filtro automático de títulos sensibles
    Cuando la etapa es Infantil o Primaria, ocultar:
-   Â· Tarjetas del catÃ¡logo con data-sensitive
-   Â· Tarjetas de la lÃ­nea del tiempo con data-sensitive
-   Â· Resultados de quiz / itinerarios marcados sensibles
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   · Tarjetas del catálogo con data-sensitive
+   · Tarjetas de la línea del tiempo con data-sensitive
+   · Resultados de quiz / itinerarios marcados sensibles
+   ══════════════════════════════════════════════════════════════ */
 body.etapa-joven .cat-card[data-sensitive="true"],
 body.etapa-joven .card[data-sensitive="true"],
 body.etapa-joven [data-sensitive="true"].itin-card,
@@ -1319,7 +1319,7 @@ body.etapa-joven [data-sensitive] .sens-badge {
   display: none !important;
 }
 
-/* Cuando el usuario busca explÃ­citamente, los sensibles vuelven a verse */
+/* Cuando el usuario busca explícitamente, los sensibles vuelven a verse */
 body.etapa-joven.searching-explicit .cat-card[data-sensitive="true"],
 body.etapa-joven.searching-explicit .card[data-sensitive="true"] {
   display: flex !important;
@@ -1327,7 +1327,7 @@ body.etapa-joven.searching-explicit .card[data-sensitive="true"] {
 
 /* Contador visual del filtro joven */
 body.etapa-joven::after {
-  content: 'âš  Modo Infantil/Primaria: tÃ­tulos con advertencia ocultos';
+  content: '⚠ Modo Infantil/Primaria: títulos con advertencia ocultos';
   position: fixed;
   bottom: 0.8rem;
   left: 50%;
@@ -1354,9 +1354,9 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   body.etapa-joven::after { display: none; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   GARANTÃA INFANTIL/PRIMARIA â€” selecciÃ³n destacada del fondo
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════
+   GARANTÍA INFANTIL/PRIMARIA — selección destacada del fondo
+   ══════════════════════════════════════════════════════════════ */
 .garantia-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1505,12 +1505,12 @@ body.modo-aula-on.etapa-joven::after { display: none; }
 .gc-opac span { transition: transform 0.15s; }
 .gc-opac:hover span { transform: translateX(3px); }
 
-/* Featured card (Yotsuba!): cubierta mÃ¡s alta */
+/* Featured card (Yotsuba!): cubierta más alta */
 .garantia-card.featured {
   background: var(--paper);
 }
 .garantia-card.featured .gc-cover {
-  /* Cabecera mÃ¡s prominente */
+  /* Cabecera más prominente */
 }
 .garantia-card.featured .gc-cover-title {
   font-size: 2rem;
@@ -1551,9 +1551,9 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .garantia-card:nth-child(n) { border-right: none; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   CÃ“MO ELEGIR â€” MicroguÃ­a a doble columna
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════
+   CÓMO ELEGIR — Microguía a doble columna
+   ══════════════════════════════════════════════════════════════ */
 .elegir-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1694,10 +1694,10 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .elegir-tip { grid-template-columns: 1fr; gap: 0.6rem; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   PROTOCOLO PRIMARIA â€” variante 3 columnas + comparativa
+/* ══════════════════════════════════════════════════════════════
+   PROTOCOLO PRIMARIA — variante 3 columnas + comparativa
    Reutiliza .protocolo / .protocolo-col del bloque general
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ══════════════════════════════════════════════════════════════ */
 .protocolo-prim {
   /* Marca visual de variante: borde izquierdo rojo */
   border-left-width: 4px;
@@ -1784,7 +1784,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .pc-col:last-child { border-bottom: none; }
 }
 
-/* â”€â”€ Callout "Componer es entender" â†’ generador â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Callout "Componer es entender" → generador ──────────── */
 .callout-generator {
   margin-top: 1.4rem;
   background: var(--paper);
@@ -1839,7 +1839,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .callout-generator .cg-tag { padding: 0.6rem 1.2rem; }
 }
 
-/* â”€â”€ Errores frecuentes en Primaria â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Errores frecuentes en Primaria ──────────────────────── */
 .errores-list {
   list-style: none;
   margin: 0;
@@ -1908,10 +1908,10 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .err-n { font-size: 2.6rem; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   PORTADA â€” Hero didÃ¡ctico con 4 caminos
+/* ══════════════════════════════════════════════════════════════
+   PORTADA — Hero didáctico con 4 caminos
    Sustituye al welcome-panel y al header original.
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ══════════════════════════════════════════════════════════════ */
 .portada-hero {
   background: var(--paper);
   border-bottom: 1.5px solid var(--ink);
@@ -2018,7 +2018,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   gap: 1rem;
 }
 .portada-question::before {
-  content: 'âŠ•';
+  content: '⊕';
   color: var(--red);
   font-size: 1.4rem;
   font-weight: 400;
@@ -2137,7 +2137,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   transition: padding 0.15s, color 0.15s;
 }
 .path-sublinks a::before {
-  content: 'â†’  ';
+  content: '→  ';
   color: var(--red);
 }
 .path-sublinks a:hover {
@@ -2160,7 +2160,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .path-card:last-child { border-bottom: none; }
 }
 
-/* â”€â”€ Banner institucional ULPGC al inicio de la portada â”€â”€â”€ */
+/* ── Banner institucional ULPGC al inicio de la portada ─── */
 .portada-banner {
   display: block;
   width: calc(100% + 6rem);
@@ -2181,7 +2181,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .portada-banner img { max-height: 80px; }
 }
 
-/* Logo Aula de CÃ³mic dentro de la attribution */
+/* Logo Aula de Cómic dentro de la attribution */
 .portada-attribution {
   display: flex;
   flex-direction: column;
@@ -2204,8 +2204,8 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   padding-left: 1.4rem;
 }
 
-/* â”€â”€â”€ FAB: reducciÃ³n drÃ¡stica Â· solo toggle visible â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   Los items ya estÃ¡n display:none por defecto en estilos.css;
+/* ─── FAB: reducción drástica · solo toggle visible ──────────
+   Los items ya están display:none por defecto en estilos.css;
    los volvemos opacos al abrir. Reposicionamos a bottom-right
    con offset hacia adentro para no chocar con contenido. */
 #tools-fab {
@@ -2264,7 +2264,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   .portada-logo { max-width: 140px; }
 }
 
-/* â”€â”€â”€ Dock izquierdo: IA + Volver arriba â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Dock izquierdo: IA + Volver arriba ──────────────────── */
 #leftDock {
   position: fixed;
   bottom: 1.2rem;
@@ -2344,7 +2344,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   transform: translateX(0);
 }
 
-/* En el dock, la IA siempre muestra el aviso "solo con API" mÃ¡s sutil */
+/* En el dock, la IA siempre muestra el aviso "solo con API" más sutil */
 #leftDock .ld-slot-ai .ld-note {
   opacity: 1;
   transform: translateX(0);
@@ -2360,12 +2360,12 @@ body.modo-aula-on.etapa-joven::after { display: none; }
 @media (max-width: 700px) {
   #leftDock { bottom: 1rem; left: 1rem; gap: 0.6rem; }
   #leftDock .ld-btn { width: 42px; height: 42px; }
-  /* En mÃ³vil ocultamos los notes */
+  /* En móvil ocultamos los notes */
   #leftDock .ld-note { display: none; }
 }
 
-/* â”€â”€â”€ EliminaciÃ³n completa del asistente IA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   PeticiÃ³n del equipo: retirar el asistente IA del recurso.
+/* ─── Eliminación completa del asistente IA ──────────────────
+   Petición del equipo: retirar el asistente IA del recurso.
    Ocultamos botones flotantes, paneles y entradas en el FAB. */
 #asist-fab,
 #aiFloatingBtn,
@@ -2380,15 +2380,15 @@ body.modo-aula-on.etapa-joven::after { display: none; }
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FIXES UX/UI Â· v5.9 Â· 2026-05
-   Aplicados tras auditorÃ­a completa (ver site/revision-uxui.html).
-   No tocan ningÃºn archivo previo; sustituyen valores por especificidad
-   y por ser la Ãºltima hoja cargada.
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════════
+   FIXES UX/UI · v5.9 · 2026-05
+   Aplicados tras auditoría completa (ver site/revision-uxui.html).
+   No tocan ningún archivo previo; sustituyen valores por especificidad
+   y por ser la última hoja cargada.
+   ══════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Escala explÃ­cita de stacking â€” TODO: migrar el resto del CSS aquÃ­ */
+  /* Escala explícita de stacking — TODO: migrar el resto del CSS aquí */
   --z-base:        1;
   --z-sticky:    100;
   --z-fab:       200;
@@ -2398,7 +2398,7 @@ body.modo-aula-on.etapa-joven::after { display: none; }
   --z-toast:   3000;
 }
 
-/* â”€â”€ FIX C-06 Â· Ocultar FABs cuando hay un overlay/modal abierto â”€â”€â”€â”€ */
+/* ── FIX C-06 · Ocultar FABs cuando hay un overlay/modal abierto ──── */
 /*    Cuando body tiene .has-overlay, todos los flotantes desaparecen   */
 body.has-overlay #gtt-btn,
 body.has-overlay #tools-fab,
@@ -2410,8 +2410,8 @@ body.has-overlay #catalogo-novedad-banner {
   pointer-events: none !important;
 }
 
-/* â”€â”€ FIX I-01 Â· Tap targets mÃ­nimos 40 px â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-/*    WCAG 2.5.5 pide 44Ã—44; ajustamos a 40 manteniendo el estilo
+/* ── FIX I-01 · Tap targets mínimos 40 px ────────────────────────── */
+/*    WCAG 2.5.5 pide 44×44; ajustamos a 40 manteniendo el estilo
       editorial denso. El padding sube la huella sin agrandar el texto. */
 .emocion-nivel-btn {
   min-height: 38px !important;
@@ -2428,7 +2428,7 @@ body.has-overlay #catalogo-novedad-banner {
   gap: 0.3rem;
 }
 @media (max-width: 768px) {
-  /* En mÃ³vil mantenemos el mÃ­nimo aunque el resto del CSS mÃ³vil
+  /* En móvil mantenemos el mínimo aunque el resto del CSS móvil
      intente compactar (ver media query de filter-bar). */
   .fb {
     min-height: 40px !important;
@@ -2446,12 +2446,12 @@ body.has-overlay #catalogo-novedad-banner {
   padding: 8px 14px !important;
 }
 
-/* â”€â”€ FIX I-08 Â· emocion-bar no debe heredar color = fondo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── FIX I-08 · emocion-bar no debe heredar color = fondo ────────── */
 .emocion-bar {
   color: var(--paper) !important;
 }
 
-/* â”€â”€ FIX I-11 Â· Opacidad de cuerpos largos (no aplica a labels) â”€â”€â”€â”€ */
+/* ── FIX I-11 · Opacidad de cuerpos largos (no aplica a labels) ──── */
 /*    Subimos a .82 las clases de cuerpo principal manteniendo los
       eyebrows/etiquetas en su opacidad original (esas son cortas). */
 .path-body,
@@ -2465,20 +2465,20 @@ body.has-overlay #catalogo-novedad-banner {
   color: rgba(243, 237, 225, 0.88);
 }
 
-/* â”€â”€ FIX I-10 Â· Eyebrow mÃ­nimo legible â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── FIX I-10 · Eyebrow mínimo legible ───────────────────────────── */
 .portada-eyebrow {
   font-size: 0.78rem !important;     /* ~12.5px, antes 11.2px */
   letter-spacing: 0.18em !important;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════════ */
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   PARTES Iâ€“IV Â· Dividers de arquitectura Â· 2026-05
-   Cuatro hitos visuales que parten la pÃ¡gina larga en 4 caminos,
+/* ══════════════════════════════════════════════════════════════════
+   PARTES I–IV · Dividers de arquitectura · 2026-05
+   Cuatro hitos visuales que parten la página larga en 4 caminos,
    coincidiendo con las 4 path-cards de la portada (#parte-i .. iv).
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ══════════════════════════════════════════════════════════════════ */
 .parte-divider {
   max-width: 1400px;
   margin: 4rem auto 2.5rem;
@@ -2538,9 +2538,9 @@ body.has-overlay #catalogo-novedad-banner {
   .parte-divider .parte-lede { font-size: 1rem; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Portada â€” materiales descargables debajo de los 4 caminos
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════════
+   Portada — materiales descargables debajo de los 4 caminos
+   ══════════════════════════════════════════════════════════════════ */
 .portada-downloads {
   max-width: 1400px;
   margin: 1.4rem auto 0;
@@ -2573,9 +2573,9 @@ body.has-overlay #catalogo-novedad-banner {
   border-bottom-color: var(--red);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Path-cards compactas â€” sin sublinks, padding reducido (C-02)
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════════
+   Path-cards compactas — sin sublinks, padding reducido (C-02)
+   ══════════════════════════════════════════════════════════════════ */
 .path-card {
   padding: 1.3rem 1.3rem 1.4rem !important;
 }
@@ -2590,11 +2590,11 @@ body.has-overlay #catalogo-novedad-banner {
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FIX I-02 Â· filter-bar sticky compacta (al scroll lejos)
+/* ══════════════════════════════════════════════════════════════════
+   FIX I-02 · filter-bar sticky compacta (al scroll lejos)
    Cuando el JS detecta scroll profundo, esta clase se aplica y reduce
-   el alto a ~56 px. Al pasar el ratÃ³n / hacer focus, se expande.
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   el alto a ~56 px. Al pasar el ratón / hacer focus, se expande.
+   ══════════════════════════════════════════════════════════════════ */
 .filter-bar.is-compact {
   max-height: 56px;
   overflow: hidden;
@@ -2602,7 +2602,7 @@ body.has-overlay #catalogo-novedad-banner {
   position: relative;
 }
 .filter-bar.is-compact::after {
-  content: 'â‹®  toca para expandir';
+  content: '⋮  toca para expandir';
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -2632,19 +2632,19 @@ body.has-overlay #catalogo-novedad-banner {
 }
 
 @media (max-width: 768px) {
-  /* En mÃ³vil, height de la sticky es aÃºn mÃ¡s crÃ­tico */
+  /* En móvil, height de la sticky es aún más crítico */
   .filter-bar.is-compact {
     max-height: 48px;
   }
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FIX I-03 + I-04 Â· Ancho de medida y respiro tipogrÃ¡fico
-   Caja Ã³ptima de lectura: 60â€“70 caracteres por lÃ­nea (~580 px).
+/* ══════════════════════════════════════════════════════════════════
+   FIX I-03 + I-04 · Ancho de medida y respiro tipográfico
+   Caja óptima de lectura: 60–70 caracteres por línea (~580 px).
    Aplicamos max-width: 65ch a los cuerpos largos y mejoramos el
    wrapping con text-wrap: pretty (no widows / no orphans).
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ══════════════════════════════════════════════════════════════════ */
 .errores-item .err-body p,
 .errores-item .err-b,
 .elegir-list li,
@@ -2670,7 +2670,7 @@ body.has-overlay #catalogo-novedad-banner {
   text-wrap: pretty;
 }
 
-/* PÃ¡rrafos largos: alivio visual con un leve respiro entre frases */
+/* Párrafos largos: alivio visual con un leve respiro entre frases */
 .sa-block p,
 .errores-item .err-body p,
 .recursos-section p,
@@ -2679,13 +2679,13 @@ body.has-overlay #catalogo-novedad-banner {
 }
 
 /* En tablas con muchas filas, evitar wrap excesivo de las celdas
-   pequeÃ±as (nivel, tÃ­tulo, etc.) pero permitirlo en "uso sugerido". */
+   pequeñas (nivel, título, etc.) pero permitirlo en "uso sugerido". */
 .cur-table td:last-child {
   max-width: 50ch;
 }
 
-/* Para los bloques con texto sa-alternatives (mÃ¡s denso),
-   columna mÃ¡s estrecha + cuerpo de tipo mÃ¡s pequeÃ±o pero generoso
+/* Para los bloques con texto sa-alternatives (más denso),
+   columna más estrecha + cuerpo de tipo más pequeño pero generoso
    en line-height para que respire. */
 .sa-alternatives {
   max-width: 62ch !important;
@@ -2693,7 +2693,7 @@ body.has-overlay #catalogo-novedad-banner {
   font-size: 0.94rem !important;
 }
 
-/* Justificar correctamente los pÃ¡rrafos largos sin huecos feos */
+/* Justificar correctamente los párrafos largos sin huecos feos */
 .sa-block p,
 .dec-body,
 .pq-body,
@@ -2703,9 +2703,9 @@ body.has-overlay #catalogo-novedad-banner {
 }
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FIX I-05 Â· Auto-hide del speed dial al scroll hacia abajo (2026-05)
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════════════════════════════════
+   FIX I-05 · Auto-hide del speed dial al scroll hacia abajo (2026-05)
+   ══════════════════════════════════════════════════════════════════ */
 #tools-fab {
   transition: transform 0.28s cubic-bezier(.4,0,.2,1),
               opacity    0.22s cubic-bezier(.4,0,.2,1);
@@ -2715,17 +2715,17 @@ body.has-overlay #catalogo-novedad-banner {
   opacity: 0;
   pointer-events: none;
 }
-/* Cuando hay overlay, ya estÃ¡ oculto por overlay-fab-hide.js â€” esto
+/* Cuando hay overlay, ya está oculto por overlay-fab-hide.js — esto
    solo aplica al estado de scroll normal. */
 
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   IDEA 4 Â· Ficha PDF por tÃ­tulo (2026-05)
+/* ══════════════════════════════════════════════════════════════════
+   IDEA 4 · Ficha PDF por título (2026-05)
    El template vive oculto en pantalla. @media print lo expone y oculta
    el resto del documento, formateado para una hoja A4.
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ══════════════════════════════════════════════════════════════════ */
 #fichaPDFTemplate {
-  /* Oculto en pantalla â€” solo aparece en el diÃ¡logo de impresiÃ³n */
+  /* Oculto en pantalla — solo aparece en el diálogo de impresión */
   display: none;
   font-family: var(--ed-serif);
   color: var(--ink);
@@ -2738,8 +2738,8 @@ body.printing-ficha-pdf #fichaPDFTemplate {
   display: block;
 }
 
-/* Si por alguna razÃ³n se inyecta visible, ocÃºltalo con !important
-   para que no pueda romper el layout normal del catÃ¡logo. */
+/* Si por alguna razón se inyecta visible, ocúltalo con !important
+   para que no pueda romper el layout normal del catálogo. */
 #fichaPDFTemplate[hidden] { display: none !important; }
 
 @media print {
@@ -2764,8 +2764,8 @@ body.printing-ficha-pdf #fichaPDFTemplate {
   }
 }
 
-/* â”€â”€ Estilos del template (vÃ¡lidos tanto para print como para
-   posible vista previa en pantalla con .preview) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Estilos del template (válidos tanto para print como para
+   posible vista previa en pantalla con .preview) ─────────────── */
 #fichaPDFTemplate {
   max-width: 178mm;
   margin: 0 auto;
