@@ -1,33 +1,33 @@
-/**
- * sw.js — Service Worker para El manga como recurso didáctico
- * Biblioteca Campus del Obelisco · Aula de Cómic · ULPGC
- * Versión: 5.46.8  (intro y línea del tiempo adaptadas a móvil)
+﻿/**
+ * sw.js â€” Service Worker para El manga como recurso didÃ¡ctico
+ * Biblioteca Campus del Obelisco Â· Aula de CÃ³mic Â· ULPGC
+ * VersiÃ³n: 5.46.17  (catÃ¡logo verificado: retirada obra no manga)
  *
- * ── PROTOCOLO DE MANTENIMIENTO ─────────────────────────────────
- * Cada vez que se publique una nueva versión del recurso:
- *   1. Incrementar CACHE_NAME aquí (ej. 'manga-ulpgc-v5.32').
- *   2. Actualizar el número de versión en la cabecera de este archivo.
+ * â”€â”€ PROTOCOLO DE MANTENIMIENTO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * Cada vez que se publique una nueva versiÃ³n del recurso:
+ *   1. Incrementar CACHE_NAME aquÃ­ (ej. 'manga-ulpgc-v5.32').
+ *   2. Actualizar el nÃºmero de versiÃ³n en la cabecera de este archivo.
  *   3. Verificar que PRECACHE_ASSETS incluye todos los assets nuevos.
- * Sin este paso, los usuarios con caché previa no recibirán
+ * Sin este paso, los usuarios con cachÃ© previa no recibirÃ¡n
  * las actualizaciones hasta que limpien el navegador manualmente.
- * ───────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  *
- * Estrategia de caché:
- *   · Cache First  → assets estáticos propios (HTML, CSS, JS, datos).
- *   · Network Only → APIs de IA (Claude, Gemini) — nunca se cachean.
- *   · Cache First  → fuentes Google (fonts.gstatic.com) — se cachean
+ * Estrategia de cachÃ©:
+ *   Â· Cache First  â†’ assets estÃ¡ticos propios (HTML, CSS, JS, datos).
+ *   Â· Network Only â†’ APIs de IA (Claude, Gemini) â€” nunca se cachean.
+ *   Â· Cache First  â†’ fuentes Google (fonts.gstatic.com) â€” se cachean
  *     en primera visita para habilitar uso offline. Si Google actualiza
- *     los binarios de fuente, la invalidación ocurrirá en la siguiente
+ *     los binarios de fuente, la invalidaciÃ³n ocurrirÃ¡ en la siguiente
  *     visita con red cuando se bump-ee CACHE_NAME.
  */
 
 'use strict';
 
-/* ── VERSIÓN DE CACHÉ ── actualizar en cada release ── */
-const CACHE_NAME = 'manga-ulpgc-v5.46.8';
+/* â”€â”€ VERSIÃ“N DE CACHÃ‰ â”€â”€ actualizar en cada release â”€â”€ */
+const CACHE_NAME = 'manga-ulpgc-v5.46.17';
 
-/* ── Assets precacheados en la instalación del SW ─────────────────
-   Incluir aquí cualquier archivo nuevo que se añada al proyecto. */
+/* â”€â”€ Assets precacheados en la instalaciÃ³n del SW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Incluir aquÃ­ cualquier archivo nuevo que se aÃ±ada al proyecto. */
 const PRECACHE_ASSETS = [
   './',
   './index.html',
@@ -50,6 +50,7 @@ const PRECACHE_ASSETS = [
   './js/left-dock.js',
   './js/overlay-fab-hide.js',
   './js/filter-collapse-sticky.js',
+  './js/timeline-jump.js',
   './js/lazy-fonts.js',
   './js/url-state.js',
   './js/ficha-pdf.js',
@@ -63,10 +64,10 @@ const PRECACHE_ASSETS = [
   './ficha_trabajo_manga.pdf',
 ];
 
-/* ── Dominios que van SIEMPRE a red (nunca se cachean) ────────────
-   · api.anthropic.com              → Claude API
-   · googleapis.com                 → Google Fonts CSS + Gemini
-   · generativelanguage.googleapis.com → Gemini API (explícito)
+/* â”€â”€ Dominios que van SIEMPRE a red (nunca se cachean) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Â· api.anthropic.com              â†’ Claude API
+   Â· googleapis.com                 â†’ Google Fonts CSS + Gemini
+   Â· generativelanguage.googleapis.com â†’ Gemini API (explÃ­cito)
    fonts.gstatic.com se omite intencionalmente: los binarios de
    fuente se cachean para permitir uso offline en el aula. */
 const NETWORK_ONLY_PATTERNS = [
@@ -75,7 +76,7 @@ const NETWORK_ONLY_PATTERNS = [
   'generativelanguage.googleapis.com',
 ];
 
-/* ── INSTALACIÓN: precachear assets estáticos ─────────────────── */
+/* â”€â”€ INSTALACIÃ“N: precachear assets estÃ¡ticos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -84,22 +85,22 @@ self.addEventListener('install', event => {
   );
 });
 
-/* ── ACTIVACIÓN: limpiar cachés de versiones anteriores ──────── */
+/* â”€â”€ ACTIVACIÃ“N: limpiar cachÃ©s de versiones anteriores â”€â”€â”€â”€â”€â”€â”€â”€ */
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
       .then(keys =>
         Promise.all(
           keys
-            .filter(k => k !== CACHE_NAME)   // conserva solo la versión actual
+            .filter(k => k !== CACHE_NAME)   // conserva solo la versiÃ³n actual
             .map(k => caches.delete(k))
         )
       )
-      .then(() => self.clients.claim())      // toma control de pestañas abiertas
+      .then(() => self.clients.claim())      // toma control de pestaÃ±as abiertas
   );
 });
 
-/* ── FETCH: Cache First para assets, Network Only para IA ───── */
+/* â”€â”€ FETCH: Cache First para assets, Network Only para IA â”€â”€â”€â”€â”€ */
 self.addEventListener('fetch', event => {
   const url = event.request.url;
 
@@ -111,13 +112,13 @@ self.addEventListener('fetch', event => {
 
   event.respondWith(
     caches.match(event.request).then(cached => {
-      // Cache hit → responder desde caché
+      // Cache hit â†’ responder desde cachÃ©
       if (cached) return cached;
 
-      // Cache miss → ir a red y cachear la respuesta
+      // Cache miss â†’ ir a red y cachear la respuesta
       return fetch(event.request)
         .then(response => {
-          // Cachear solo respuestas válidas del propio origen o CORS anónimo
+          // Cachear solo respuestas vÃ¡lidas del propio origen o CORS anÃ³nimo
           if (response.ok && response.type !== 'opaque') {
             const clone = response.clone();
             caches.open(CACHE_NAME)
@@ -126,12 +127,13 @@ self.addEventListener('fetch', event => {
           return response;
         })
         .catch(() => {
-          // Fallback offline: devolver index.html para navegación SPA
+          // Fallback offline: devolver index.html para navegaciÃ³n SPA
           if (event.request.mode === 'navigate') {
             return caches.match('./index.html');
           }
-          // Para otros recursos (imágenes, fuentes), fallo silencioso
+          // Para otros recursos (imÃ¡genes, fuentes), fallo silencioso
         });
     })
   );
 });
+
