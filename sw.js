@@ -24,7 +24,7 @@
 'use strict';
 
 /* ── VERSIÓN DE CACHÉ ── actualizar en cada release ── */
-const CACHE_NAME = 'manga-ulpgc-v5.55.0';
+const CACHE_NAME = 'manga-ulpgc-v5.55.2';
 
 /* ── Assets precacheados en la instalación del SW ─────────────────
    Incluir aquí cualquier archivo nuevo que se añada al proyecto. */
@@ -37,6 +37,7 @@ const PRECACHE_ASSETS = [
   './css/editorial.css',
   './css/editorial-extras.css',
   './js/app.min.js',
+  './js/guia-fix.js',
   './js/datos.min.js',
   './js/vinetas-generator.js',
   './js/actividad-vinetas.js',
@@ -163,4 +164,3 @@ self.addEventListener('fetch', event => {
     })
   );
 });
-
