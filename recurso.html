@@ -4562,6 +4562,21 @@
       <button type="button" class="rubrica-gen-btn" id="rubricaGenBtn" data-action="generarRubrica">
         Generar rúbrica ✦
       </button>
+      <div class="gen-key-wrap" data-key-panel>
+        <div class="gen-key-head">
+          <button type="button" class="gen-key-toggle" data-action="toggleGeneratorKeyPanel" aria-expanded="false">⚙ Gemini/API</button>
+          <span class="gen-key-indicator" data-key-status-text>Modo local</span>
+        </div>
+        <div class="gen-key-panel" hidden>
+          <p class="gen-key-help">Clave opcional de Google AI Studio. Si no la añades, la rúbrica se genera con plantilla local.</p>
+          <div class="gen-key-row">
+            <input type="password" class="gen-key-input" placeholder="AIza…" autocomplete="off" aria-label="Clave API Gemini">
+            <button type="button" class="gen-key-save" data-action="saveGeneratorKey">Activar Gemini</button>
+            <button type="button" class="gen-key-clear" data-action="clearGeneratorKey">Quitar</button>
+          </div>
+          <div class="gen-key-status" role="status">Sin clave: se usará el modo local.</div>
+        </div>
+      </div>
     </div>
     <div class="rubrica-body" id="rubricaBody">
       <p class="rubrica-placeholder">Elige un título y etapa, y el asistente IA generará una rúbrica de evaluación LOMLOE lista para usar.</p>
@@ -4622,6 +4637,21 @@
       <button type="button" class="sec-gen-btn" id="secGenBtn" data-action="generarSecuencia">
         Generar secuencia ✦
       </button>
+      <div class="gen-key-wrap" data-key-panel>
+        <div class="gen-key-head">
+          <button type="button" class="gen-key-toggle" data-action="toggleGeneratorKeyPanel" aria-expanded="false">⚙ Gemini/API</button>
+          <span class="gen-key-indicator" data-key-status-text>Modo local</span>
+        </div>
+        <div class="gen-key-panel" hidden>
+          <p class="gen-key-help">Clave opcional de Google AI Studio. Si no la añades, la secuencia se genera con plantilla local.</p>
+          <div class="gen-key-row">
+            <input type="password" class="gen-key-input" placeholder="AIza…" autocomplete="off" aria-label="Clave API Gemini">
+            <button type="button" class="gen-key-save" data-action="saveGeneratorKey">Activar Gemini</button>
+            <button type="button" class="gen-key-clear" data-action="clearGeneratorKey">Quitar</button>
+          </div>
+          <div class="gen-key-status" role="status">Sin clave: se usará el modo local.</div>
+        </div>
+      </div>
     </div>
     <div class="sec-body" id="secBody">
       <p class="sec-placeholder">Elige un título, la etapa, el número de sesiones y la competencia principal.
@@ -5021,4 +5051,3 @@
   <script src="sw-register.js"></script>
 </body>
 </html>
-
