@@ -8305,11 +8305,43 @@ const LOMLOE_COMPS = {
 
 let _guiaSelected = new Set();   // Set of títulos selected
 
+let _guiaHandlersReady = false;
+
+function _ensureGuiaHandlers() {
+  if (_guiaHandlersReady) return;
+  _guiaHandlersReady = true;
+
+  document.addEventListener('input', ev => {
+    const input = ev.target.closest?.('#guiaSearch, #guiaSearchInput');
+    if (!input) return;
+    _renderGuiaPicker(input.value || '');
+  }, true);
+
+  document.addEventListener('change', ev => {
+    const input = ev.target.closest?.('#guiaPickerList input[data-guia-title]');
+    if (!input) return;
+    window.toggleGuiaItem(input.dataset.guiaTitle, input.checked);
+  }, true);
+
+  document.addEventListener('click', ev => {
+    const item = ev.target.closest?.('#guiaPickerList .guia-picker-item');
+    if (!item) return;
+    const input = item.querySelector('input[data-guia-title]');
+    if (!input) return;
+    setTimeout(() => window.toggleGuiaItem(input.dataset.guiaTitle, input.checked), 0);
+  }, true);
+}
+
+document.addEventListener('DOMContentLoaded', _ensureGuiaHandlers);
+
 window.openGuia = function() {
   const _opener = document.activeElement;
+  _ensureGuiaHandlers();
   document.getElementById('guiaOverlay')?.classList.add('open');
   document.body.style.overflow = 'hidden';
-  _renderGuiaPicker('');
+  const search = document.getElementById('guiaSearch') || document.getElementById('guiaSearchInput');
+  if (search) search.value = '';
+  _renderGuiaPicker(search?.value || '');
   _updateGuiaChips();
   FocusTrap.activate(document.getElementById('guiaModal'), _opener);
 };
