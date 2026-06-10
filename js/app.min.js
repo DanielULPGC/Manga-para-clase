@@ -2674,6 +2674,63 @@ function toggleAsistKeyWrap() {
   wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
 }
 
+function syncGeneratorKeyPanels() {
+  const active = !!sessionStorage.getItem(MANGA_ASIST_KEY);
+  document.querySelectorAll('[data-key-status-text]').forEach(el => {
+    el.textContent = active ? 'Gemini activo' : 'Modo local';
+  });
+  document.querySelectorAll('.gen-key-status').forEach(el => {
+    el.textContent = active
+      ? 'Gemini activo. La clave se borrará al cerrar la pestaña.'
+      : 'Sin clave: se usará el modo local.';
+    el.classList.toggle('ok', active);
+    el.classList.remove('err');
+  });
+}
+
+function toggleGeneratorKeyPanel({ target }) {
+  const wrap = target.closest('.gen-key-wrap');
+  const panel = wrap?.querySelector('.gen-key-panel');
+  if (!panel) return;
+  const open = panel.hasAttribute('hidden');
+  panel.toggleAttribute('hidden', !open);
+  target.setAttribute('aria-expanded', open ? 'true' : 'false');
+  syncGeneratorKeyPanels();
+  if (open) wrap.querySelector('.gen-key-input')?.focus();
+}
+
+function saveGeneratorKey({ target }) {
+  const wrap = target.closest('.gen-key-wrap');
+  const input = wrap?.querySelector('.gen-key-input');
+  const status = wrap?.querySelector('.gen-key-status');
+  const val = input?.value.trim() || '';
+  if (!val.startsWith('AIza')) {
+    if (status) {
+      status.textContent = 'La clave de Gemini debe empezar por AIza.';
+      status.classList.add('err');
+      status.classList.remove('ok');
+    }
+    input?.focus();
+    return;
+  }
+  sessionStorage.setItem(MANGA_ASIST_KEY, val);
+  if (input) input.value = '';
+  syncGeneratorKeyPanels();
+}
+
+function clearGeneratorKey({ target }) {
+  const wrap = target.closest('.gen-key-wrap');
+  const input = wrap?.querySelector('.gen-key-input');
+  sessionStorage.removeItem(MANGA_ASIST_KEY);
+  if (input) input.value = '';
+  syncGeneratorKeyPanels();
+}
+
+window.toggleGeneratorKeyPanel = toggleGeneratorKeyPanel;
+window.saveGeneratorKey = saveGeneratorKey;
+window.clearGeneratorKey = clearGeneratorKey;
+document.addEventListener('DOMContentLoaded', syncGeneratorKeyPanels);
+
 /**
  * Desplaza suavemente al ancla del inicio.
  * Reemplaza el handler inline del enlace de navegación principal.
@@ -8253,6 +8310,7 @@ window.openGuia = function() {
   document.getElementById('guiaOverlay')?.classList.add('open');
   document.body.style.overflow = 'hidden';
   _renderGuiaPicker('');
+  _updateGuiaChips();
   FocusTrap.activate(document.getElementById('guiaModal'), _opener);
 };
 
@@ -8274,7 +8332,7 @@ function _renderGuiaPicker(q) {
 
   list.innerHTML = items.map(t => {
     const checked = _guiaSelected.has(t.titulo) ? 'checked' : '';
-    return `<label class="guia-picker-item">
+    return `<label class="guia-picker-item" tabindex="0">
       <input type="checkbox" ${checked} data-guia-title="${escapeHtml(t.titulo)}">
       <span class="guia-picker-dot" style="background:${t.color}"></span>
       <span>
@@ -8288,6 +8346,17 @@ function _renderGuiaPicker(q) {
       window.toggleGuiaItem(input.dataset.guiaTitle, input.checked);
     });
   });
+  list.querySelectorAll('.guia-picker-item').forEach(item => {
+    item.addEventListener('keydown', ev => {
+      if (ev.key !== 'Enter' && ev.key !== ' ') return;
+      const input = item.querySelector('input[data-guia-title]');
+      if (!input) return;
+      ev.preventDefault();
+      input.checked = !input.checked;
+      window.toggleGuiaItem(input.dataset.guiaTitle, input.checked);
+    });
+  });
+  _updateGuiaChips();
 }
 
 window.toggleGuiaItem = function(titulo, checked) {
@@ -8339,13 +8408,18 @@ window.generarGuia = async function() {
   const covers = {};
   if (incPortadas) {
     await Promise.allSettled(selected.map(async t => {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3500);
       try {
         const q   = encodeURIComponent(t.titulo + ' ' + t.autor.split('·')[0]);
-        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=1&fields=items(volumeInfo(imageLinks))`);
+        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=1&fields=items(volumeInfo(imageLinks))`, { signal: controller.signal });
         const data = await res.json();
         const thumb = data?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
         if (thumb) covers[t.titulo] = thumb.replace('zoom=1','zoom=2').replace('http://','https://');
-      } catch(e) {}
+      } catch(e) {
+      } finally {
+        clearTimeout(timeout);
+      }
     }));
   }
 
