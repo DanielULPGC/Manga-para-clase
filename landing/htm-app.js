@@ -1,4 +1,4 @@
-/* ══════════════════════════════════════════════════════════════════
+﻿/* ══════════════════════════════════════════════════════════════════
    htm-app.js — Landing page sin Babel, usando htm + React
    htm convierte template literals en React.createElement, evitando
    el bug de babel-standalone con bundles grandes.
@@ -312,7 +312,7 @@
             <${motion.div} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6 }} className="font-mono text-[11px] uppercase tracking-kicker text-gold mb-8">// Bienvenida al recurso</>
             <${BlurText} text="Empieza por el camino que necesitas." italic className="font-heading text-paper text-5xl md:text-7xl lg:text-[6rem] leading-[0.95] tracking-[-0.02em] font-semibold mb-8 justify-center" tag="h2" stagger=${90} />
             <${motion.p} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6, delay:0.5 }} className="text-paper/85 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
-              Marco pedagógico, fondo de 280 títulos, situaciones LOMLOE e itinerarios — todo en un único recurso, abierto y mantenido por la Biblioteca del Campus del Obelisco.
+              Marco pedagógico, fondo de 280 títulos, situaciones LOMLOE e itinerarios — todo en un único recurso, abierto y mantenido por el Aula de Cómic de la Facultad de Ciencias de la Educación.
             </>
             <${motion.div} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6, delay:0.7 }} className="flex flex-wrap items-center justify-center gap-3">
               <${PaperBtn} href="recurso.html#parte-i" className="!px-8 !py-4 text-[12px]">Entrar al recurso <${ArrowUpRight} size=${16} /></>

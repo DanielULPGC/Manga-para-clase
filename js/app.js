@@ -5485,63 +5485,72 @@ document.addEventListener('DOMContentLoaded', function() {
       nivel: 'Secundaria · Bachillerato · Universidad',
       preguntas: [
         '¿Por qué el arte japonés más refinado nació en un período de paz aristocrática? ¿Qué condiciones sociales permiten que florezca la cultura?',
-        'Las Chōjū-giga muestran animales que se comportan como humanos criticando a la nobleza. ¿Qué tradición artística occidental conoces que use el mismo recurso?'
+        'Las Chōjū-giga muestran animales que se comportan como humanos criticando a la nobleza. ¿Qué tradición artística occidental conoces que use el mismo recurso?',
+        '🌊 En paralelo: mientras la corte Heian refina su arte, Canarias vive su período prehispánico, con sociedades amaziges sin escritura. ¿Puede existir una cultura visual y narrativa rica sin escritura? ¿Qué papel juegan la oralidad y la imagen en cada caso?'
       ]
     },
     'Kamakura · Muromachi': {
       nivel: 'Secundaria · Bachillerato',
       preguntas: [
         'Japón pasó de una nobleza cortesana a una clase guerrera (samurái) en el poder. ¿Conoces en la historia occidental algún cambio de élite similar?',
-        'El bushido establece un código de honor estricto. ¿En qué se parece y en qué se diferencia del código caballeresco europeo medieval?'
+        'El bushido establece un código de honor estricto. ¿En qué se parece y en qué se diferencia del código caballeresco europeo medieval?',
+        '🌊 En paralelo: mientras el Japón samurái guerrea entre clanes, Castilla conquista Canarias (1402-1496) y somete al pueblo guanche. ¿Quién escribe la historia en cada caso? ¿Cómo retrata el manga histórico a vencedores y vencidos?'
       ]
     },
     'Sengoku · Momoyama': {
       nivel: 'Secundaria · Bachillerato',
       preguntas: [
         'El Sengoku es un siglo de guerra civil continua. ¿Qué condiciones políticas explican que un país fragmentado en señoríos rivales acabe unificándose?',
-        '¿Por qué crees que la cultura japonesa (teatro Nō, ceremonia del té, jardines zen) alcanzó una refinación extrema justo en un período de violencia máxima?'
+        '¿Por qué crees que la cultura japonesa (teatro Nō, ceremonia del té, jardines zen) alcanzó una refinación extrema justo en un período de violencia máxima?',
+        '🌊 En paralelo: en 1549 el misionero navarro Francisco Javier desembarca en Japón, mientras Canarias se consolida como escala atlántica de las flotas de Indias. ¿Qué papel jugaron las islas y los puertos en esa primera globalización?'
       ]
     },
     'Edo': {
       nivel: 'Secundaria · Bachillerato · Universidad',
       preguntas: [
         'Japón cerró sus fronteras al mundo exterior durante más de 200 años (sakoku). ¿Qué consecuencias tuvo ese aislamiento en su desarrollo cultural, tecnológico y económico?',
-        'Hokusai publica en 1814 los cuadernos que darán nombre al manga. ¿Por qué una cultura con siglos de arte visual secuencial tarda tanto en crear un término propio para nombrarlo?'
+        'Hokusai publica en 1814 los cuadernos que darán nombre al manga. ¿Por qué una cultura con siglos de arte visual secuencial tarda tanto en crear un término propio para nombrarlo?',
+        '🌊 En paralelo: Japón se cierra al exterior (sakoku) mientras Canarias vive precisamente de su apertura como escala entre tres continentes. ¿Qué gana y qué pierde una sociedad insular con cada estrategia? ¿Aislarse protege una cultura o la congela?'
       ]
     },
     'Meiji': {
       nivel: 'Secundaria · Bachillerato',
       preguntas: [
         'Japón pasó en pocas décadas de feudalismo a potencia industrial moderna. ¿Qué pierde y qué gana una sociedad cuando moderniza a marcha forzada?',
-        'Los primeros manga de la era Meiji copiaron técnicas de la caricatura occidental. ¿Es copiar una forma de resistencia cultural o de colonización cultural? ¿Puede ser las dos cosas?'
+        'Los primeros manga de la era Meiji copiaron técnicas de la caricatura occidental. ¿Es copiar una forma de resistencia cultural o de colonización cultural? ¿Puede ser las dos cosas?',
+        '🌊 En paralelo: mientras Japón se industrializa a marcha forzada, los puertos francos (1852) abren Canarias al comercio mundial y la crisis del 98 hunde al imperio español. ¿Por qué unas décadas encumbran a un país y sumen a otro en la crisis? ¿Qué papel juega el mar en ambos destinos?'
       ]
     },
     'Taishō': {
       nivel: 'Secundaria · Bachillerato',
       preguntas: [
         'La era Taishō fue la más democrática y cosmopolita del Japón premoderno. ¿Por qué duró tan poco? ¿Qué factores históricos pueden truncar un período liberal?',
-        'El manga cómico de esta época mezcla humor absurdo con crítica social. ¿Qué otras formas artísticas conoces que usen el humor para decir verdades incómodas?'
+        'El manga cómico de esta época mezcla humor absurdo con crítica social. ¿Qué otras formas artísticas conoces que usen el humor para decir verdades incómodas?',
+        '🌊 En paralelo: la breve democracia Taishō coincide con la Ley de Cabildos (1912), que dio a cada isla canaria un gobierno propio. ¿Qué condiciones hacen frágiles a las instituciones nuevas? ¿Por qué unas sobreviven y otras se truncan?'
       ]
     },
     'Shōwa': {
       nivel: 'Secundaria · Bachillerato · Universidad',
       preguntas: [
         'Tezuka sobrevivió los bombardeos de Osaka y en 1952 crea a Astroboy, un niño-robot símbolo de esperanza. ¿Cómo puede el trauma colectivo transformarse en arte que mira al futuro?',
-        'El manga de posguerra nació en revistas de alquiler para niños pobres que no podían comprarlas. ¿Qué relación existe entre la precariedad económica y la explosión de una forma artística popular?'
+        'El manga de posguerra nació en revistas de alquiler para niños pobres que no podían comprarlas. ¿Qué relación existe entre la precariedad económica y la explosión de una forma artística popular?',
+        '🌊 En paralelo: la posguerra japonesa que vio nacer a Astroboy coincide con la gran emigración canaria a Venezuela. ¿Cómo elabora cada sociedad la escasez: emigrando, creando, recordando? ¿Qué relatos e imágenes produjo cada experiencia?'
       ]
     },
     'Heisei': {
       nivel: 'ESO · Bachillerato · Universidad',
       preguntas: [
         'El manga Heisei tematiza el miedo a la tecnología, la identidad líquida y el fin del mundo. ¿En qué medida esos miedos de los años 90 japoneses siguen siendo los nuestros hoy?',
-        'Japón exportó su cultura pop masivamente durante el Heisei (anime, manga, videojuegos). ¿Es eso soft power? ¿En qué se diferencia de la exportación cultural que hacen EE. UU. o Europa?'
+        'Japón exportó su cultura pop masivamente durante el Heisei (anime, manga, videojuegos). ¿Es eso soft power? ¿En qué se diferencia de la exportación cultural que hacen EE. UU. o Europa?',
+        '🌊 En paralelo: a comienzos de los años noventa varias televisiones autonómicas españolas emitieron Dragon Ball y desataron el primer boom del manga en España. ¿Cómo llega una cultura lejana a un archipiélago atlántico? ¿Quién recuerda en tu familia aquel primer encuentro?'
       ]
     },
     'Reiwa': {
       nivel: 'ESO · Bachillerato · Universidad',
       preguntas: [
         'El manga Reiwa representa protagonistas que buscan "vivir despacio" (日常系, nichijō-kei). ¿Qué dice eso de la sociedad japonesa actual? ¿Resonaría en el alumnado canario?',
-        'Por primera vez en su historia, el manga japonés tiene más lectoras que lectores. ¿Qué transforma una industria cultural cuando cambia quién la consume?'
+        'Por primera vez en su historia, el manga japonés tiene más lectoras que lectores. ¿Qué transforma una industria cultural cuando cambia quién la consume?',
+        '🌊 En paralelo: el manga concentra hoy buena parte del cómic que se vende en España y entra en bibliotecas universitarias como esta. ¿Qué ha cambiado para que un material considerado marginal se convierta en recurso académico?'
       ]
     }
   };
@@ -5576,6 +5585,12 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.setAttribute('title', 'Pregunta detonadora para el aula');
 
       // Panel — appended to body so it escapes overflow:hidden scroll
+      // Títulos de la propia columna de la era (derivados del DOM de la
+      // línea del tiempo: de la pregunta a la lectura sin salir del fondo).
+      const colTitles = Array.from(bar.parentElement.querySelectorAll('.ct'))
+        .map(n => n.textContent.replace(/^[★✦]\s*/, '').trim())
+        .filter(Boolean)
+        .slice(0, 3);
       const panel = document.createElement('div');
       panel.className = 'era-q-panel';
       panel.setAttribute('role', 'dialog');
@@ -5583,8 +5598,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="era-q-label">✦ Pregunta detonadora · ${eraName}</span>
         <span class="era-q-nivel">${data.nivel}</span>
         <ul class="era-q-list">
-          ${data.preguntas.map(q => `<li>${q}</li>`).join('')}
-        </ul>`;
+          ${data.preguntas.map(q => `<li${q.indexOf('🌊') === 0 ? ' class="q-paralelo"' : ''}>${q}</li>`).join('')}
+        </ul>
+        ${colTitles.length ? `<span class="era-q-fondo"><span class="era-q-fondo-label">En esta era de la línea del tiempo</span>${colTitles.map(t => `<span class="era-q-chip">${t}</span>`).join('')}</span>` : ''}`;
       document.body.appendChild(panel);
 
       function positionPanel() {

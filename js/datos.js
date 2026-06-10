@@ -1,4 +1,4 @@
-/* ══════════════════════════════════════════════════════
+﻿/* ══════════════════════════════════════════════════════
    datos.js — Catálogo de 280 títulos manga · ULPGC — v5.45
    Biblioteca Campus del Obelisco · Aula de Cómic
    Generado automáticamente desde el HTML original
@@ -1298,7 +1298,7 @@ const CATALOGO = [
     uso:       'emocional historia',
     nivel:     'bachillerato universidad',
     color:     '#7A5A0A',
-    tip:       'Biografía de Katsushika Hokusai por Ishinomori. Para historia del arte japonés y la figura del artista que acuñó la palabra manga.',
+    tip:       'Biografía de Katsushika Hokusai por Ishinomori. Para historia del arte japonés y la figura del artista cuyos cuadernos popularizaron la palabra manga.',
     periodo:   'Edad Moderna · Ilustración',
     badges:    ["Educación emocional", "Historia"],
     niveles:   ["Bachillerato", "Universidad"],
