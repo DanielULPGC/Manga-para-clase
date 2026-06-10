@@ -1,7 +1,7 @@
-/**
+﻿/**
  * sw.js — Service Worker para El manga como recurso didáctico
  * Biblioteca Campus del Obelisco · Aula de Cómic · ULPGC
- * Versión: 5.46.18  (catálogo verificado: retirada obra no manga + reparación UTF-8)
+ * Versión: 5.55.0  (minificacion real, script de release, version unica)
  *
  * ── PROTOCOLO DE MANTENIMIENTO ─────────────────────────────────
  * Cada vez que se publique una nueva versión del recurso:
@@ -24,7 +24,7 @@
 'use strict';
 
 /* ── VERSIÓN DE CACHÉ ── actualizar en cada release ── */
-const CACHE_NAME = 'manga-ulpgc-v5.46.18';
+const CACHE_NAME = 'manga-ulpgc-v5.55.0';
 
 /* ── Assets precacheados en la instalación del SW ─────────────────
    Incluir aquí cualquier archivo nuevo que se añada al proyecto. */
@@ -62,6 +62,33 @@ const PRECACHE_ASSETS = [
   './img/logo-aula-comic.jpg',
   './img/logo-aula-comic.webp',
   './ficha_trabajo_manga.pdf',
+  './assets/libs/react.production.min.js',
+  './assets/libs/react-dom.production.min.js',
+  './assets/libs/framer-motion.js',
+  './assets/libs/htm.js',
+  './assets/libs/d3.min.js',
+  './landing/portada-bind.js',
+  './landing/intro-boot.js',
+  './landing/tailwind.css',
+  './icons/icon-180.png',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/icon-192-maskable.png',
+  './icons/icon-512-maskable.png',
+  './css/marco-bloques.css',
+  './css/marco-bloques-2.css',
+  './css/estructura.css',
+  './css/pendientes.css',
+  './css/a11y-contrast.css',
+  './css/preferencias.css',
+  './css/andamiaje-lectura.css',
+  './css/v551-visual.css',
+  './css/orden-lectura.css',
+  './js/parte-nav.js',
+  './js/preferencias.js',
+  './js/andamiaje-lectura.js',
+  './js/v551-reveal.js',
+  './js/orden-lectura.js',
 ];
 
 /* ── Dominios que van SIEMPRE a red (nunca se cachean) ────────────
