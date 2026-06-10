@@ -2759,7 +2759,7 @@ function _initDirectListeners() {
     ?.addEventListener('change', e => grafoFilterNivel(e.target.value));
 
   // Buscador del panel de guía de lectura
-  document.getElementById('guiaSearchInput')
+  (document.getElementById('guiaSearch') || document.getElementById('guiaSearchInput'))
     ?.addEventListener('input', e => filterGuiaPicker(e.target.value));
 
   Logger.debug('Delegation', 'Listeners directos registrados');
@@ -4388,6 +4388,17 @@ async function generarRubrica() {
     return;
   }
 
+  const generarLocal = (nota) => {
+    if (typeof generarRubricaLocal !== 'function') return false;
+    bodyEl.innerHTML = generarRubricaLocal(titulo, nivel, comps) +
+      `<p class="rubrica-fallback-note">${nota}</p>`;
+    return true;
+  };
+
+  if (!apiKey && generarLocal('Generada con plantilla local: no hay clave de Gemini activa.')) {
+    return;
+  }
+
   btn.disabled = true;
   btn.textContent = 'Generando…';
   bodyEl.innerHTML = `<p class="rubrica-placeholder">Generando rúbrica${apiKey ? ' con Gemini' : ' con Claude'}…</p>`;
@@ -4414,11 +4425,65 @@ async function generarRubrica() {
       `✦ Generado con <strong>${_lastAiProvider} IA</strong> · ` +
       `Revisa y adapta antes de usar en el aula · EU AI Act Art. 50</p></div>`;
   } catch (e) {
-    bodyEl.innerHTML = _errorHtml(e, generarRubrica);
+    if (!generarLocal('La generación con IA no respondió. Se usó la plantilla local.')) {
+      bodyEl.innerHTML = _errorHtml(e, generarRubrica);
+    }
   } finally {
     btn.disabled = false;
     btn.textContent = 'Generar rúbrica ✦';
   }
+}
+
+window.generarRubrica = generarRubrica;
+
+function generarSecuenciaLocal(titulo, etapa, sesiones, comps) {
+  const comp = comps.length ? comps.join(' · ') : 'CCL';
+  const compPrincipal = comps[0] || 'CCL';
+  const cat = (typeof CATALOGO !== 'undefined')
+    ? CATALOGO.find(t => t.titulo === titulo || titulo.toLowerCase().includes(t.titulo.toLowerCase().substring(0, 12)))
+    : null;
+  const uso = cat?.badges?.[0] || cat?.uso || 'lectura multimodal';
+  const tip = cat?.tip || 'Título útil para activar lectura visual, conversación guiada y producción breve.';
+  const ods = cat?.ods?.length ? cat.ods.map(n => 'ODS ' + n).join(' · ') : 'ODS 4 · Educación de calidad';
+  const total = Math.max(1, parseInt(sesiones, 10) || 4);
+  const rows = Array.from({ length: total }, (_, i) => {
+    const n = i + 1;
+    const fase = n === 1 ? 'Activación y contrato lector'
+      : n === total ? 'Producto final y evaluación'
+      : n === 2 ? 'Lectura guiada y análisis visual'
+      : 'Taller de interpretación y transferencia';
+    const actividad = n === 1
+      ? `Presentación de «${titulo}», hipótesis de lectura y vocabulario visual básico.`
+      : n === total
+        ? 'El alumnado entrega una producción breve y la contrasta con la rúbrica.'
+        : 'Trabajo por grupos sobre viñetas, personajes, contexto y pregunta curricular.';
+    const indicador = n === total
+      ? `Integra ${compPrincipal} en un producto comunicable y revisado.`
+      : 'Participa con evidencias del texto visual y verbal.';
+    return `<tr><td>${n}</td><td>${fase}</td><td>${actividad}</td><td>Manga seleccionado, proyector/PDI, ficha de lectura, cuaderno.</td><td>${indicador}</td></tr>`;
+  }).join('');
+
+  return `<div class="sec-content">
+    <h3>Secuencia didáctica: <em>${escapeHtml(titulo)}</em></h3>
+    <p><strong>Etapa:</strong> ${escapeHtml(etapa)} · <strong>Sesiones:</strong> ${total} · <strong>Competencias:</strong> ${escapeHtml(comp)}</p>
+    <h4>Justificación</h4>
+    <p>La propuesta usa el manga como texto multimodal para trabajar comprensión lectora, análisis de imagen secuencial y producción guiada. ${escapeHtml(tip)}</p>
+    <p><strong>Conexión ODS:</strong> ${escapeHtml(ods)}. <strong>Uso pedagógico:</strong> ${escapeHtml(uso)}.</p>
+    <h4>Objetivos didácticos</h4>
+    <ul>
+      <li>Leer una obra manga integrando texto, imagen, secuencia y contexto.</li>
+      <li>Relacionar la obra con contenidos curriculares de ${escapeHtml(etapa)}.</li>
+      <li>Argumentar interpretaciones con evidencias visuales y verbales.</li>
+      <li>Producir una respuesta final breve, revisada y comunicable.</li>
+    </ul>
+    <h4>Tabla de sesiones</h4>
+    <table><thead><tr><th>Sesión</th><th>Fase</th><th>Actividad</th><th>Recursos</th><th>Indicador</th></tr></thead><tbody>${rows}</tbody></table>
+    <h4>Metodología</h4>
+    <p>Lectura guiada, conversación literaria, trabajo cooperativo, modelado docente y cierre metacognitivo. La obra se usa como detonador, no como sustituto del currículo.</p>
+    <h4>Evaluación</h4>
+    <p>Instrumentos: observación, producto final, breve autoevaluación y rúbrica vinculada a ${escapeHtml(compPrincipal)}.</p>
+    <p class="ia-transparency-note" role="note">Generada con plantilla local sin IA. Revisa y adapta antes de usar en el aula.</p>
+  </div>`;
 }
 
 async function generarSecuencia() {
@@ -4434,6 +4499,16 @@ async function generarSecuencia() {
 
   if (!titulo) {
     bodyEl.innerHTML = '<p class="sec-placeholder">Introduce el título de un manga.</p>';
+    return;
+  }
+
+  const generarLocal = (nota) => {
+    bodyEl.innerHTML = generarSecuenciaLocal(titulo, etapa, sesiones, comps) +
+      `<p class="rubrica-fallback-note">${nota}</p>`;
+  };
+
+  if (!apiKey) {
+    generarLocal('Generada con plantilla local: no hay clave de Gemini activa.');
     return;
   }
 
@@ -4483,12 +4558,14 @@ Solo HTML: <h3><h4><p><ul><li><table><thead><tbody><tr><th><td>`;
       `✦ Generado con <strong>${_lastAiProvider} IA</strong> · ` +
       `Revisa y adapta antes de usar en el aula · EU AI Act Art. 50</p></div>`;
   } catch (e) {
-    bodyEl.innerHTML = _errorHtml(e, generarSecuencia);
+    generarLocal('La generación con IA no respondió. Se usó la plantilla local.');
   } finally {
     btn.disabled = false;
     btn.textContent = 'Generar secuencia ✦';
   }
 }
+
+window.generarSecuencia = generarSecuencia;
 
 // ══════════════════════════════════════════════════════════════════
 // ASISTENTE PEDAGÓGICO IA (Chat)
@@ -8198,7 +8275,7 @@ function _renderGuiaPicker(q) {
   list.innerHTML = items.map(t => {
     const checked = _guiaSelected.has(t.titulo) ? 'checked' : '';
     return `<label class="guia-picker-item">
-      <input type="checkbox" ${checked} onchange="toggleGuiaItem('${t.titulo.replace(/'/g,"\\'")}', this.checked)">
+      <input type="checkbox" ${checked} data-guia-title="${escapeHtml(t.titulo)}">
       <span class="guia-picker-dot" style="background:${t.color}"></span>
       <span>
         <span class="guia-picker-title">${t.titulo}</span><br>
@@ -8206,6 +8283,11 @@ function _renderGuiaPicker(q) {
       </span>
     </label>`;
   }).join('');
+  list.querySelectorAll('input[data-guia-title]').forEach(input => {
+    input.addEventListener('change', () => {
+      window.toggleGuiaItem(input.dataset.guiaTitle, input.checked);
+    });
+  });
 }
 
 window.toggleGuiaItem = function(titulo, checked) {
@@ -8225,11 +8307,16 @@ function _updateGuiaChips() {
     `<span class="guia-chip">
       ${t.slice(0,28)}${t.length>28?'…':''}
       <button type="button" class="guia-chip-rm"
-        onclick="toggleGuiaItem('${t.replace(/'/g,"\\'")}',false);
-                 _renderGuiaPicker(document.getElementById('guiaSearch').value)"
+        data-guia-title="${escapeHtml(t)}"
         aria-label="Quitar ${t}">✕</button>
     </span>`
   ).join('');
+  chips.querySelectorAll('.guia-chip-rm[data-guia-title]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.toggleGuiaItem(btn.dataset.guiaTitle, false);
+      _renderGuiaPicker(document.getElementById('guiaSearch')?.value || '');
+    });
+  });
 }
 
 window.generarGuia = async function() {
@@ -8352,6 +8439,15 @@ window.generarGuia = async function() {
     win.document.write(guideHtml);
     win.document.close();
     setTimeout(() => win.print(), 800);
+  } else if (typeof _descargarBlob === 'function') {
+    const safeName = titulo.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'guia-didactica';
+    _descargarBlob(new Blob([guideHtml], { type: 'text/html;charset=utf-8' }), `${safeName}.html`);
+  } else {
+    const url = URL.createObjectURL(new Blob([guideHtml], { type: 'text/html;charset=utf-8' }));
+    location.href = url;
   }
 
   btn.disabled = false;
