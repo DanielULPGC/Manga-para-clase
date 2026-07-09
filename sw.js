@@ -1,4 +1,4 @@
-﻿/**
+/**
  * sw.js — Service Worker para El manga como recurso didáctico
  * Biblioteca Campus del Obelisco · Aula de Cómic · ULPGC
  * Versión: 5.55.0  (minificacion real, script de release, version unica)
@@ -24,7 +24,7 @@
 'use strict';
 
 /* ── VERSIÓN DE CACHÉ ── actualizar en cada release ── */
-const CACHE_NAME = 'manga-ulpgc-v5.55.2';
+const CACHE_NAME = 'manga-ulpgc-v5.55.2-f1';
 
 /* ── Assets precacheados en la instalación del SW ─────────────────
    Incluir aquí cualquier archivo nuevo que se añada al proyecto. */
@@ -55,6 +55,15 @@ const PRECACHE_ASSETS = [
   './js/lazy-fonts.js',
   './js/url-state.js',
   './js/ficha-pdf.js',
+  './js/modo-lectura.js',
+  './jardin-de-tinta.html',
+  './js/jardin-arte.js',
+  './js/jardin-scroll.js',
+  './img/estampas/hokusai-gran-ola.jpg',
+  './img/estampas/hiroshige-lluvia.jpg',
+  './img/estampas/sharaku-actor.jpg',
+  './img/estampas/kuniyoshi-esqueleto.jpg',
+  './img/estampas/hokusai-manga-rostros.jpg',
   './manifest.json',
   './icons/icon.svg',
   './intro/card.html',
