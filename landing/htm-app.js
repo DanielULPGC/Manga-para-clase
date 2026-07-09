@@ -1,4 +1,4 @@
-﻿/* ══════════════════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════════════════
    htm-app.js — Landing page sin Babel, usando htm + React
    htm convierte template literals en React.createElement, evitando
    el bug de babel-standalone con bundles grandes.
@@ -314,10 +314,22 @@
             <${motion.p} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6, delay:0.5 }} className="text-paper/85 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
               Marco pedagógico, fondo de 280 títulos, situaciones LOMLOE e itinerarios — todo en un único recurso, abierto y mantenido por el Aula de Cómic de la Facultad de Ciencias de la Educación.
             </>
-            <${motion.div} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6, delay:0.7 }} className="flex flex-wrap items-center justify-center gap-3">
+            <${motion.div} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6, delay:0.7 }} className="flex flex-col items-center gap-8">
               <${PaperBtn} href="recurso.html#parte-i" className="!px-8 !py-4 text-[12px]">Entrar al recurso <${ArrowUpRight} size=${16} /></>
-              <a href="manual-docente.html" className="inline-flex items-center gap-2 liquid-glass px-5 py-3.5 rounded-full text-paper font-mono uppercase tracking-kicker text-[11px]">⎙ Manual docente</a>
-              <a href="deck-claustro.html" className="inline-flex items-center gap-2 liquid-glass px-5 py-3.5 rounded-full text-paper font-mono uppercase tracking-kicker text-[11px]">▶ Deck claustro</a>
+              <div className="flex flex-wrap items-start justify-center gap-x-12 gap-y-6">
+                <div className="flex flex-col items-center gap-3">
+                  <span className="font-mono text-[10px] uppercase tracking-kicker text-paper/45">Para ti</span>
+                  <a href="manual-docente.html" className="inline-flex items-center gap-2 liquid-glass px-5 py-3.5 rounded-full text-paper font-mono uppercase tracking-kicker text-[11px]">⎙ Manual docente</a>
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="font-mono text-[10px] uppercase tracking-kicker text-paper/45">Para presentarlo</span>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <a href="deck-claustro.html" className="inline-flex items-center gap-2 liquid-glass px-5 py-3.5 rounded-full text-paper font-mono uppercase tracking-kicker text-[11px]">▶ Deck claustro</a>
+                    <a href="jardin-de-tinta.html" title="Pieza de apertura para proyectar en claustro o primera sesión" className="inline-flex items-center gap-2 liquid-glass px-5 py-3.5 rounded-full text-paper font-mono uppercase tracking-kicker text-[11px]">❀ Jardín de tinta</a>
+                  </div>
+                  <span className="font-mono text-[9px] uppercase tracking-kicker text-paper/35">deck para el claustro · jardín para proyectar</span>
+                </div>
+              </div>
             </>
           </div>
         </div>
