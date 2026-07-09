@@ -57,7 +57,7 @@
   }
 
   /* ─── CINEMATIC BACKGROUND ──────────────────────────────────── */
-  function CinematicBg({ image=null, tint='red', intensity=1 }) {
+  function CinematicBg({ image=null, tint='red', intensity=1, imageOpacity=0.28 }) {
     const particlesRef = useRef(null);
     useEffect(() => {
       const root = particlesRef.current; if (!root) return;
@@ -80,7 +80,7 @@
     return html`
       <div className="absolute inset-0 overflow-hidden grain" aria-hidden="true">
         <div className="absolute inset-0 bg-ink"></div>
-        ${image && html`<div className="absolute inset-0 kenburns" style=${{ backgroundImage:`url("${image}")`, backgroundSize:'cover', backgroundPosition:'center', opacity:0.28, mixBlendMode:'screen' }}></div>`}
+        ${image && html`<div className="absolute inset-0 kenburns" style=${{ backgroundImage:`url("${image}")`, backgroundSize:'cover', backgroundPosition:'center', opacity:imageOpacity, mixBlendMode:'screen' }}></div>`}
         <div className="absolute inset-0" style=${{ background: grad }}></div>
         <div className="absolute inset-x-0 bottom-0 h-2/3 wave-bg"></div>
         <div className="absolute inset-0" style=${{ background: 'radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.45) 100%)' }}></div>
@@ -139,7 +139,7 @@
   function Hero() {
     return html`
       <section id="top" className="relative min-h-screen flex flex-col overflow-hidden">
-        <${CinematicBg} image="img/banner-ulpgc-aulacomic.jpg" tint="red" intensity=${0.9} />
+        <${CinematicBg} image="img/hokusai-gran-ola.jpg" tint="red" intensity=${0.9} />
         <${Nav} />
         <div className="relative z-10 flex-1 flex items-center px-6 lg:px-12 pt-28 pb-12">
           <div className="max-w-5xl mx-auto w-full text-center">
@@ -307,7 +307,7 @@
     return html`
       <section id="aula" className="relative overflow-hidden">
         <div className="relative min-h-[80vh] flex items-center px-6 lg:px-12 py-32">
-          <${CinematicBg} image="img/banner-ulpgc-aulacomic.jpg" tint="gold" intensity=${1.1} />
+          <${CinematicBg} image="img/hiroshige-lluvia.jpg" tint="gold" intensity=${1.1} />
           <div className="relative z-10 max-w-5xl mx-auto w-full text-center">
             <${motion.div} initial=${{ opacity:0, y:10 }} whileInView=${{ opacity:1, y:0 }} viewport=${{ once:true, amount:0.3 }} transition=${{ duration:0.6 }} className="font-mono text-[11px] uppercase tracking-kicker text-gold mb-8">// Bienvenida al recurso</>
             <${BlurText} text="Empieza por el camino que necesitas." italic className="font-heading text-paper text-5xl md:text-7xl lg:text-[6rem] leading-[0.95] tracking-[-0.02em] font-semibold mb-8 justify-center" tag="h2" stagger=${90} />
